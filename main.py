@@ -16,7 +16,7 @@ def check_website_change(url):
             response.raise_for_status()
 
             soup = BeautifulSoup(response.text, 'html.parser')
-            current_content = str(soup)
+            current_content = soup.prettify()  # Convertendo o objeto BeautifulSoup para string formatada
 
             if previous_content is not None and current_content != previous_content:
                 changes = find_changes(previous_content, current_content)
